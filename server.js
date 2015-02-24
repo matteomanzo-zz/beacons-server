@@ -4,6 +4,10 @@ var server = require('http').createServer(app);
 
 app.set('view engine', 'ejs');
 
+app.get('/', function(req, res) {
+  res.render('index')
+});
+
 app.get('/beacon', function(req, res) {
   console.log('Hello World!');
 });
