@@ -5,11 +5,12 @@ var server = require('http').createServer(app);
 app.set('view engine', 'ejs');
 
 app.get('/', function(req, res) {
-  res.render('index')
+  res.render('index');
 });
 
 app.get('/beacon', function(req, res) {
   console.log('Hello World!');
+  res.render('index');
 });
 
 server.listen(process.env.PORT || 9999, function() {
