@@ -10,7 +10,6 @@ app.get('/', function(req, res) {
 
 app.get('/beacon', function(req, res) {
   console.log('Hello World!');
-  res.render('index');
 });
 
 server.listen(process.env.PORT || 9999, function() {
