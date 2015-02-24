@@ -12,8 +12,8 @@ app.get('/beacon', function(req, res) {
   console.log('Hello World!');
 });
 
-server.listen(9999, function() {
-  console.log('server is listening on port 9999');
+server.listen(process.env.PORT || 9999, function() {
+  console.log('server is listening somewhere');
 });
 
 module.exports = server;
