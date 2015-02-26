@@ -28,7 +28,8 @@ app.get('/', function(req, res) {
 });
 
 app.get('/in', function(req, res) {
- console.log(req.body.email);
+ console.log(req.body);
+
  // console.log(util.inspect(req));
  // query = (url.parse(req.url,true));
  // console.log(query);
@@ -36,20 +37,12 @@ app.get('/in', function(req, res) {
  // console.log(params);
  // r = JSON.stringify(params);
  // console.log(r.email);
-
- 
- // res.header("Access-Control-Allow-Origin", "*");
- // res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
- // res.header("Access-Control-Allow-Headers", "X-Requested-With,Content-Type,Cache-Control");
  res.jsonp({ "my": "object" });
 });
 
 app.get('/out', function(req, res) {
   console.log("out"+req);
   console.log(req.toString());
-  // res.header("Access-Control-Allow-Origin", "*");
-  // res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-  // res.header("Access-Control-Allow-Headers", "X-Requested-With,Content-Type,Cache-Control");
   res.jsonp({ "my": "object" });
 });
 
