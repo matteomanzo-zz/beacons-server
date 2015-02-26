@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
+var util = require('util');
 
 app.set('view engine', 'ejs');
 app.set("jsonp callback", true);
@@ -22,6 +23,7 @@ app.get('/', function(req, res) {
 
 app.get('/in', function(req, res) {
  console.log("in"+req);
+ console.log(util.inspect(req));
  // res.header("Access-Control-Allow-Origin", "*");
  // res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
  // res.header("Access-Control-Allow-Headers", "X-Requested-With,Content-Type,Cache-Control");
@@ -29,7 +31,8 @@ app.get('/in', function(req, res) {
 });
 
 app.get('/out', function(req, res) {
-  console.log("out")
+  console.log("out"+req);
+  console.log(req.toString());
   // res.header("Access-Control-Allow-Origin", "*");
   // res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
   // res.header("Access-Control-Allow-Headers", "X-Requested-With,Content-Type,Cache-Control");
