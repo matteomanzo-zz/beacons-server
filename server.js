@@ -28,7 +28,6 @@ app.get('/', function(req, res) {
 });
 
 app.get('/in', function(req, res) {
- console.log(req.body);
 
  // console.log(util.inspect(req));
  // query = (url.parse(req.url,true));
