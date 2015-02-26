@@ -18,9 +18,9 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.use(bodyParser.urlencoded({'extended':'true'}));
-app.use(bodyParser.json());
-app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
+// app.use(bodyParser.urlencoded({'extended':'true'}));
+// app.use(bodyParser.json());
+// app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
 app.get('/', function(req, res) {
   res.render('index');
