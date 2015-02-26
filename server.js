@@ -2,6 +2,8 @@ var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
 var util = require('util');
+var url = require('url');
+var bodyParser = require('body-parser');
 
 app.set('view engine', 'ejs');
 app.set("jsonp callback", true);
@@ -16,14 +18,26 @@ app.use(function (req, res, next) {
     next();
 });
 
+app.use(bodyParser.urlencoded({'extended':'true'}));
+app.use(bodyParser.json());
+app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
+
 app.get('/', function(req, res) {
   res.render('index');
   console.log("homepage")
 });
 
 app.get('/in', function(req, res) {
- console.log("in"+req);
- console.log(util.inspect(req));
+ console.log(req.body.email);
+ // console.log(util.inspect(req));
+ // query = (url.parse(req.url,true));
+ // console.log(query);
+ // params = query.query.p;
+ // console.log(params);
+ // r = JSON.stringify(params);
+ // console.log(r.email);
+
+ 
  // res.header("Access-Control-Allow-Origin", "*");
  // res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
  // res.header("Access-Control-Allow-Headers", "X-Requested-With,Content-Type,Cache-Control");
