@@ -4,7 +4,8 @@ var server = require('http').createServer(app);
 var http = require('http');
 var util = require('util');
 var url = require('url');
-var DB_PATH = 'https://turnup-tunein.herokuapp.com/';
+var DB_PATH = 'https://turnup-tunein.herokuapp.com';
+var SERVER_PATH = 'https://fierce-dawn-6227.herokuapp.com';
 var request = require('request');
 
 
@@ -30,8 +31,9 @@ app.get('/', function(req, res) {
   console.log("homepage")
 });
 
-function jsonCall(object) {
-  request.get('https://turnup-tunein.herokuapp.com',object, function (error, response, body){
+function jsonCall(object,path) {
+  console.log("trying to hit Matteo");
+  request.get(path,object, function (error, response, body){
     if (!error && response.statusCode == 200) {
       console.log("Sent To Matteo");
     } else
@@ -50,7 +52,7 @@ app.get('/in', function(req, res) {
   console.log(params);
   console.log(params.email);
   res.jsonp({ "my": "Jack" });
-  jsonCall(params);
+  jsonCall(params,SERVER_PATH);
 });
 
 app.get('/out', function(req, res) {
