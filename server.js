@@ -29,9 +29,9 @@ app.get('/', function(req, res) {
 
 app.get('/in', function(req, res) {
   console.log("Device In Range Of Beacon")
-  console.log(util.inspect(req));
+  // console.log(util.inspect(req));
   query = (url.parse(req.url,true));
-  console.log(res.query);
+  // console.log(res.query);
   params = query.query;
   console.log(params);
   console.log(params.email);
