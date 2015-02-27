@@ -3,7 +3,8 @@ var app = express();
 var server = require('http').createServer(app);
 var util = require('util');
 var url = require('url');
-var DB_PATH = 'https://turnup-tunein.herokuapp.com/'
+var DB_PATH = 'https://turnup-tunein.herokuapp.com/';
+var $ = require('jquery');
 // var bodyParser = require('body-parser');
 
 app.set('view engine', 'ejs');
