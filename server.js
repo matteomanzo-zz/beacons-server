@@ -31,12 +31,11 @@ app.get('/in', function(req, res) {
   console.log("Device In Range Of Beacon")
   console.log(util.inspect(req));
   query = (url.parse(req.url,true));
-  console.log(query);
- // params = query.query.p;
- // console.log(params);
- // r = JSON.stringify(params);
- // console.log(r.email);
- res.jsonp({ "my": "Jack" });
+  console.log(res.query);
+  params = query.query;
+  console.log(params);
+  console.log(params.email);
+  res.jsonp({ "my": "Jack" });
 });
 
 app.get('/out', function(req, res) {
