@@ -28,7 +28,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/in', function(req, res) {
-
+  console.log("Device In Range Of Beacon")
  // console.log(util.inspect(req));
  // query = (url.parse(req.url,true));
  // console.log(query);
@@ -40,7 +40,7 @@ app.get('/in', function(req, res) {
 });
 
 app.get('/out', function(req, res) {
-  console.log("out"+req);
+  console.log("Device Disconected From Beacon");
   console.log(req.toString());
   res.jsonp({ "my": "object" });
 });
