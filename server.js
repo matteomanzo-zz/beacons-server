@@ -3,7 +3,7 @@ var app = express();
 var server = require('http').createServer(app);
 var util = require('util');
 var url = require('url');
-var bodyParser = require('body-parser');
+// var bodyParser = require('body-parser');
 
 app.set('view engine', 'ejs');
 app.set("jsonp callback", true);
