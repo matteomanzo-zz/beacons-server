@@ -63,8 +63,12 @@ app.get('/out', function(req, res) {
 
 app.get('/qry', function(req, res) {
   console.log("Query is hit");
-  console.log(req);
-  res.jsonp({ "my": "Jack" });
+    query = (url.parse(req.url,true));
+  // console.log(res.query);
+  params = query.query;
+  console.log(params);
+  console.log(params.email);
+  res.jsonp({ "beacon_major": "9999", "beacon_minor": "1111" });
 });
 
 server.listen(process.env.PORT || 9999, function() {
