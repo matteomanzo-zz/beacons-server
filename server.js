@@ -5,6 +5,7 @@ var http = require('http');
 var util = require('util');
 var url = require('url');
 var DB_PATH = 'https://turnup-tunein.herokuapp.com/';
+var request = require('request');
 
 
 app.set('view engine', 'ejs');
@@ -30,7 +31,6 @@ app.get('/', function(req, res) {
 });
 
 function jsonCall(object) {
-var request = require('request');
   request.post('https://turnup-tunein.herokuapp.com', function (error, response, body){
     if (!error && response.statusCode == 200) {
       console.log("Sent To Matteo");
