@@ -1,10 +1,12 @@
 var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
+var http = require('http');
 var util = require('util');
 var url = require('url');
 var DB_PATH = 'https://turnup-tunein.herokuapp.com/';
 var $ = require('jquery');
+var request = require('request');
 // var bodyParser = require('body-parser');
 
 app.set('view engine', 'ejs');
@@ -30,22 +32,10 @@ app.get('/', function(req, res) {
 });
 
 function jsonCall(object) {
-  $.ajax({
-    type: "GET",
-    async: false,
-    dataType: 'jsonp',
-    jsonp: 'callback',
-    data: object,
-    jsonpCallback: "callbackfunction",
-    url: DB_PATH,
-    crossDomain: true,
-    success: function(json){
-      console.log("success");
-    },
-    error: function(){
-      console.log("error");
+  request('https://turnup-tunein.herokuapp.com', function (error, response, body){
+    if (!error && response.statusCode == 200) {
+      console.log("Sent To Matteo")
     }
-
   });
 };
 
