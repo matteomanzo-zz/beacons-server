@@ -61,8 +61,9 @@ app.get('/out', function(req, res) {
   res.jsonp({ "my": "object" });
 });
 
-app.get('/qry', function() {
+app.get('/qry', function(req, res) {
   console.log("Query is hit");
+  console.log(req);
   res.jsonp({ "my": "Jack" });
 });
 
