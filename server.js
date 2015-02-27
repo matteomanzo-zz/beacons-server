@@ -49,7 +49,6 @@ app.get('/in', function(req, res) {
   query = (url.parse(req.url,true));
   // console.log(res.query);
   params = query.query;
-  console.log(params);
   console.log(params.email);
   res.jsonp({ "my": "Jack" });
   jsonCall(params,SERVER_PATH);
@@ -66,7 +65,6 @@ app.get('/qry', function(req, res) {
     query = (url.parse(req.url,true));
   // console.log(res.query);
   params = query.query;
-  console.log(params);
   console.log(params.email);
   res.jsonp({ "beacon_major": "9999", "beacon_minor": "1111" });
 });
