@@ -3,6 +3,7 @@ var app = express();
 var server = require('http').createServer(app);
 var util = require('util');
 var url = require('url');
+var DB_PATH = 'https://turnup-tunein.herokuapp.com/'
 // var bodyParser = require('body-parser');
 
 app.set('view engine', 'ejs');
@@ -27,6 +28,26 @@ app.get('/', function(req, res) {
   console.log("homepage")
 });
 
+function jsonCall(object) {
+  $.ajax({
+    type: "GET",
+    async: false,
+    dataType: 'jsonp',
+    jsonp: 'callback',
+    data: object,
+    jsonpCallback: "callbackfunction",
+    url: DB_PATH,
+    crossDomain: true,
+    success: function(json){
+      console.log("success");
+    },
+    error: function(){
+      console.log("error");
+    }
+
+  });
+};
+
 app.get('/in', function(req, res) {
   console.log("Device In Range Of Beacon")
   // console.log(util.inspect(req));
@@ -36,6 +57,7 @@ app.get('/in', function(req, res) {
   console.log(params);
   console.log(params.email);
   res.jsonp({ "my": "Jack" });
+  jsonCall(params);
 });
 
 app.get('/out', function(req, res) {
