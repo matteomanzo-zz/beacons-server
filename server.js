@@ -62,7 +62,7 @@ app.get('/out', function(req, res) {
 });
 
 app.get('/qry', function() {
-
+  console.log("Query is hit");
   res.jsonp({ "my": "Jack" });
 });
 
