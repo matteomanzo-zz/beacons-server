@@ -7,7 +7,8 @@ var url = require('url');
 var DB_PATH = 'https://turnup-tunein.herokuapp.com';
 var SERVER_PATH = 'https://fierce-dawn-6227.herokuapp.com';
 var request = require('request');
-
+var SpotifyWebApi = require('spotify-web-api-node');
+var SPOTIFY_MOC = 'http://localhost:9999/song';
 
 app.set('view engine', 'ejs');
 app.set("jsonp callback", true);
@@ -26,16 +27,24 @@ app.use(function (req, res, next) {
 // app.use(bodyParser.json());
 // app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
+app.get('/song', function(req, res){
+  console.log('hitting songs');
+  res.json({spotify_id:7,spotify_ids:8});
+});
+
 app.get('/', function(req, res) {
   res.render('index');
   console.log("homepage")
 });
 
-function jsonCall(object,path) {
+function jsonCall(object, path, callback) {
   console.log("trying to hit Matteo");
-  request.get(path,object, function (error, response, body){
+  request.get(path, object, function (error, response, body){
     if (!error && response.statusCode == 200) {
       console.log("Sent To Matteo");
+      console.log("Matteo said:"+response);
+      console.log("Matteo said:"+JSON.parse(response.body).spotify_id);
+      callback(JSON.parse(response.body));
     } else
     {
       console.log(error);
@@ -43,16 +52,29 @@ function jsonCall(object,path) {
   });
 };
 
+function spotifyAdd(json) {
+  console.log(json);
+};
+
 app.get('/in', function(req, res) {
   console.log("Device In Range Of Beacon")
-  // console.log(util.inspect(req));
-  query = (url.parse(req.url,true));
-  // console.log(res.query);
+  query = (url.parse(req.url, true));
   params = query.query;
   console.log(params.email);
   res.jsonp({ "my": "Jack" });
-  jsonCall(params,SERVER_PATH);
+  // those params are a json object that should go to blue
+  jsonCall(params, SPOTIFY_MOC, function(json){
+      console.log("get songs from db");
+      console.log('now need to contact spotify with ' + json.spotify_id);
+      res.jsonp(json);
+  }); 
 });
+
+app.get('/in_callback', function() {
+
+});
+
+
 
 app.get('/out', function(req, res) {
   console.log("Device Disconected From Beacon");
@@ -62,7 +84,7 @@ app.get('/out', function(req, res) {
 
 app.get('/qry', function(req, res) {
   console.log("Query is hit");
-    query = (url.parse(req.url,true));
+    query = (url.parse(req.url, true));
   // console.log(res.query);
   params = query.query;
   console.log(params.email);
