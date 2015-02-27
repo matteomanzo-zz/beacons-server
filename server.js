@@ -31,7 +31,7 @@ app.get('/', function(req, res) {
 });
 
 function jsonCall(object) {
-  request.post('https://turnup-tunein.herokuapp.com', function (error, response, body){
+  request('https://turnup-tunein.herokuapp.com',object, function (error, response, body){
     if (!error && response.statusCode == 200) {
       console.log("Sent To Matteo");
     }
