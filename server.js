@@ -36,7 +36,7 @@ app.get('/in', function(req, res) {
  // console.log(params);
  // r = JSON.stringify(params);
  // console.log(r.email);
- res.jsonp({ "my": "object" });
+ res.jsonp({ "my": "Jack" });
 });
 
 app.get('/out', function(req, res) {
